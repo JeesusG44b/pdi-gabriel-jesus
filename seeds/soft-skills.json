@@ -1,0 +1,58 @@
+[
+  {
+    "id": "ponte-entre-areas",
+    "icon": "Network",
+    "title": "Ponte entre áreas",
+    "description": "Traduzo problema técnico para comercial, CS e parceiros, e o caminho inverso.",
+    "status": "Já pratico",
+    "sort_order": 0
+  },
+  {
+    "id": "gestao-incidentes",
+    "icon": "Siren",
+    "title": "Gestão de incidentes",
+    "description": "Conduzo triagem, comunico status e fecho com causa raiz.",
+    "status": "Já pratico",
+    "sort_order": 1
+  },
+  {
+    "id": "escrita-tecnica",
+    "icon": "FileText",
+    "title": "Escrita técnica",
+    "description": "Documento runbook, handoff e decisão para quem não estava na conversa.",
+    "status": "Já pratico",
+    "sort_order": 2
+  },
+  {
+    "id": "aprendizado-com-plano",
+    "icon": "BookOpen",
+    "title": "Aprendizado com plano",
+    "description": "Estudo em ciclo, com entrega e revisão semanal.",
+    "status": "Já pratico",
+    "sort_order": 3
+  },
+  {
+    "id": "visao-de-negocio",
+    "icon": "TrendingUp",
+    "title": "Visão de negócio",
+    "description": "Converter problema operacional em horas, volume ou receita em risco e recomendar uma decisão.",
+    "status": "Em desenvolvimento",
+    "sort_order": 4
+  },
+  {
+    "id": "apresentar-para-lideranca",
+    "icon": "Presentation",
+    "title": "Apresentar para liderança",
+    "description": "Levar a recomendação com o número que a sustenta na primeira frase.",
+    "status": "Em desenvolvimento",
+    "sort_order": 5
+  },
+  {
+    "id": "feedback-estruturado",
+    "icon": "MessagesSquare",
+    "title": "Feedback estruturado",
+    "description": "Pedir feedback escrito de engenharia e de comercial ou CS a cada ciclo e mostrar o que mudou.",
+    "status": "Em desenvolvimento",
+    "sort_order": 6
+  }
+]

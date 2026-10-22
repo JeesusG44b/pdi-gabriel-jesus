@@ -1,0 +1,159 @@
+@import "tailwindcss" source(none);
+@source "../src";
+@import "tw-animate-css";
+
+@custom-variant dark (&:is(.dark *));
+
+@theme inline {
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+  --radius-2xl: calc(var(--radius) + 8px);
+  --radius-3xl: calc(var(--radius) + 12px);
+  --font-sans: "IBM Plex Sans", ui-sans-serif, system-ui, sans-serif;
+  --font-mono: "IBM Plex Mono", ui-monospace, SFMono-Regular, Menlo, monospace;
+  --font-display: "Fjalla One", "IBM Plex Sans", ui-sans-serif, system-ui, sans-serif;
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-primary-deep: var(--primary-deep);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-info: var(--info);
+  --color-info-foreground: var(--info-foreground);
+  --color-success: var(--success);
+  --color-success-foreground: var(--success-foreground);
+  --color-warning: var(--warning);
+  --color-warning-foreground: var(--warning-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --color-tricolor-white: var(--tricolor-white);
+}
+
+/* Tricolor azul, branco e vermelho (SPEC 6.1). Nomes de token do template mantidos. */
+:root {
+  --radius: 1rem;
+  --background: #F6F8FC;
+  --foreground: #0D1B2E;
+  --card: #FFFFFF;
+  --card-foreground: #0D1B2E;
+  --popover: #FFFFFF;
+  --popover-foreground: #0D1B2E;
+  --primary: #0B3D91;
+  --primary-foreground: #FFFFFF;
+  --primary-deep: #072A66;
+  --secondary: #EEF3FA;
+  --secondary-foreground: #0D1B2E;
+  --muted: #EEF3FA;
+  --muted-foreground: #4A5A70;
+  --accent: #C8102E;
+  --accent-foreground: #FFFFFF;
+  --info: #3A5FB0;
+  --info-foreground: #FFFFFF;
+  --success: #1B7F4A;
+  --success-foreground: #FFFFFF;
+  --warning: #9A6700;
+  --warning-foreground: #0D1B2E;
+  --destructive: #C8102E;
+  --destructive-foreground: #FFFFFF;
+  --border: #D9E1EC;
+  --input: #D9E1EC;
+  --ring: #0B3D91;
+  --tricolor-white: #FFFFFF;
+  --gradient-primary: linear-gradient(135deg, #0B3D91 0%, #3A5FB0 50%, #C8102E 100%);
+  --gradient-soft: linear-gradient(135deg, #E8EFFB 0%, #FBEBEE 100%);
+  --shadow-soft: 0 10px 30px -12px color-mix(in oklab, #0B3D91 35%, transparent);
+  --shadow-glow: 0 0 40px color-mix(in oklab, #0B3D91 30%, transparent);
+}
+
+.dark {
+  --background: #0A1220;
+  --foreground: #E8EEF7;
+  --card: #111C2E;
+  --card-foreground: #E8EEF7;
+  --popover: #111C2E;
+  --popover-foreground: #E8EEF7;
+  --primary: #5B8DEF;
+  --primary-foreground: #0A1220;
+  --primary-deep: #8FB3FF;
+  --secondary: #1A2740;
+  --secondary-foreground: #E8EEF7;
+  --muted: #1A2740;
+  --muted-foreground: #9AA9BF;
+  --accent: #FF5A6E;
+  --accent-foreground: #0A1220;
+  --info: #5B8DEF;
+  --info-foreground: #0A1220;
+  --success: #4CC38A;
+  --success-foreground: #0A1220;
+  --warning: #E3B341;
+  --warning-foreground: #0A1220;
+  --destructive: #FF5A6E;
+  --destructive-foreground: #0A1220;
+  --border: #22314A;
+  --input: #22314A;
+  --ring: #5B8DEF;
+  --tricolor-white: #E8EEF7;
+  --gradient-primary: linear-gradient(135deg, #5B8DEF 0%, #FF5A6E 100%);
+  --gradient-soft: linear-gradient(135deg, #15264A 0%, #2A1A2E 100%);
+  --shadow-soft: 0 10px 30px -12px color-mix(in oklab, #5B8DEF 30%, transparent);
+  --shadow-glow: 0 0 40px color-mix(in oklab, #5B8DEF 25%, transparent);
+}
+
+@layer base {
+  * { border-color: var(--color-border); }
+  body {
+    background-color: var(--color-background);
+    color: var(--color-foreground);
+    background-image:
+      linear-gradient(to right, color-mix(in oklab, var(--primary) 10%, transparent) 1px, transparent 1px),
+      linear-gradient(to bottom, color-mix(in oklab, var(--primary) 10%, transparent) 1px, transparent 1px);
+    background-size: 48px 48px;
+    background-attachment: fixed;
+    font-family: var(--font-sans);
+  }
+  /* Títulos em Fjalla One (só tem peso 400: sem negrito sintético) */
+  h1, h2, h3 {
+    font-family: var(--font-display);
+    font-synthesis: none;
+    letter-spacing: 0.01em;
+  }
+}
+
+@keyframes fade-in {
+  from { opacity: 0; transform: translateY(12px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+@keyframes pulse-soft {
+  0%, 100% { box-shadow: 0 0 0 0 color-mix(in oklab, var(--primary) 50%, transparent); }
+  50% { box-shadow: 0 0 0 14px color-mix(in oklab, var(--primary) 0%, transparent); }
+}
+.animate-fade-in { animation: fade-in 0.5s ease-out both; }
+.animate-pulse-soft { animation: pulse-soft 2.4s ease-in-out infinite; }
+.hover-scale { transition: transform 0.2s ease-out; }
+.hover-scale:hover { transform: scale(1.02); }
+.glass {
+  background: color-mix(in oklab, white 75%, transparent);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+}
+.dark .glass { background: color-mix(in oklab, black 35%, transparent); }
+.gradient-primary { background-image: var(--gradient-primary); }
+/* Tema escuro: branco sobre o gradiente claro dá ~3:1; texto escuro (--primary-foreground) dá 5,2 a 6,2:1. */
+.dark .gradient-primary.text-white { color: var(--primary-foreground); }
+.gradient-soft { background-image: var(--gradient-soft); }
+.shadow-soft { box-shadow: var(--shadow-soft); }
+.shadow-glow { box-shadow: var(--shadow-glow); }

@@ -1,0 +1,178 @@
+[
+  {
+    "id": "cloud",
+    "area": "Cloud AWS",
+    "icon": "Cloud",
+    "sort_order": 0,
+    "techs": [
+      {
+        "name": "AWS Lambda",
+        "status": "estudando"
+      },
+      {
+        "name": "Amazon SQS e SNS",
+        "status": "estudando"
+      },
+      {
+        "name": "Amazon EventBridge",
+        "status": "preciso-estudar"
+      },
+      {
+        "name": "Amazon DynamoDB",
+        "status": "estudando"
+      },
+      {
+        "name": "Amazon CloudWatch",
+        "status": "estudando"
+      },
+      {
+        "name": "IAM",
+        "status": "preciso-estudar"
+      },
+      {
+        "name": "VPC e redes na AWS",
+        "status": "preciso-estudar"
+      },
+      {
+        "name": "Pulumi (IaC)",
+        "status": "estudando"
+      },
+      {
+        "name": "Cloudflare Workers e D1",
+        "status": "preciso-estudar"
+      }
+    ]
+  },
+  {
+    "id": "dados",
+    "area": "Dados e SQL",
+    "icon": "Database",
+    "sort_order": 1,
+    "techs": [
+      {
+        "name": "SQL",
+        "status": "domino"
+      },
+      {
+        "name": "Snowflake",
+        "status": "estudando"
+      },
+      {
+        "name": "Metabase",
+        "status": "domino"
+      },
+      {
+        "name": "CTEs e window functions",
+        "status": "estudando"
+      },
+      {
+        "name": "Modelagem no DynamoDB",
+        "status": "estudando"
+      }
+    ]
+  },
+  {
+    "id": "automacao",
+    "area": "Automação e integrações",
+    "icon": "Workflow",
+    "sort_order": 2,
+    "techs": [
+      {
+        "name": "n8n",
+        "status": "domino"
+      },
+      {
+        "name": "Webhooks",
+        "status": "domino"
+      },
+      {
+        "name": "APIs de e-commerce",
+        "status": "domino"
+      },
+      {
+        "name": "Node.js e NestJS",
+        "status": "estudando"
+      },
+      {
+        "name": "TypeScript",
+        "status": "estudando"
+      },
+      {
+        "name": "Jest",
+        "status": "preciso-estudar"
+      },
+      {
+        "name": "Git e GitHub",
+        "status": "estudando"
+      }
+    ]
+  },
+  {
+    "id": "ia",
+    "area": "IA aplicada",
+    "icon": "Sparkles",
+    "sort_order": 3,
+    "techs": [
+      {
+        "name": "Engenharia de prompt",
+        "status": "domino"
+      },
+      {
+        "name": "Claude Code e subagentes",
+        "status": "estudando"
+      },
+      {
+        "name": "MCP",
+        "status": "estudando"
+      },
+      {
+        "name": "LLM em automação (n8n + LLM)",
+        "status": "estudando"
+      },
+      {
+        "name": "Avaliação de saída de LLM",
+        "status": "preciso-estudar"
+      },
+      {
+        "name": "RAG",
+        "status": "preciso-estudar"
+      }
+    ]
+  },
+  {
+    "id": "ingles",
+    "area": "Inglês profissional",
+    "icon": "Languages",
+    "sort_order": 4,
+    "techs": [
+      {
+        "name": "Leitura técnica",
+        "status": "estudando"
+      },
+      {
+        "name": "Escrita técnica",
+        "status": "estudando"
+      },
+      {
+        "name": "Conversação",
+        "status": "preciso-estudar"
+      }
+    ]
+  },
+  {
+    "id": "certificacoes",
+    "area": "Certificações",
+    "icon": "Award",
+    "sort_order": 5,
+    "techs": [
+      {
+        "name": "AWS Cloud Practitioner (CLF-C02)",
+        "status": "estudando"
+      },
+      {
+        "name": "AWS Solutions Architect Associate (SAA-C03)",
+        "status": "preciso-estudar"
+      }
+    ]
+  }
+]

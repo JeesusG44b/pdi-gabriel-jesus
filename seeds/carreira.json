@@ -1,0 +1,52 @@
+{
+  "career_steps": [
+    {
+      "id": "se-pleno",
+      "title": "Solutions Engineer Pleno",
+      "is_current": 1,
+      "sort_order": 0,
+      "focus": "Integrações de e-commerce, automação de operação e incidentes; base serverless AWS e SQL avançado."
+    },
+    {
+      "id": "se-senior",
+      "title": "Solutions Engineer Sênior",
+      "is_current": 0,
+      "sort_order": 1,
+      "focus": "Autonomia com evidência: arquitetura de integração, automação medida, business case e postmortem com RFC."
+    },
+    {
+      "id": "solutions-architect",
+      "title": "Solutions Architect",
+      "is_current": 0,
+      "sort_order": 2,
+      "focus": "Desenho de soluções em AWS para parceiros e clientes, SAA-C03 e padrões de integração de pagamento."
+    }
+  ],
+  "career_goals": [
+    {
+      "id": "cg-1",
+      "title": "Fechar os 5 projetos âncora do Ciclo 1",
+      "sort_order": 0
+    },
+    {
+      "id": "cg-2",
+      "title": "Badge do AWS Serverless Learning Plan",
+      "sort_order": 1
+    },
+    {
+      "id": "cg-3",
+      "title": "Automação com LLM em uso (P2)",
+      "sort_order": 2
+    },
+    {
+      "id": "cg-4",
+      "title": "CLF-C02 em janeiro de 2027",
+      "sort_order": 3
+    },
+    {
+      "id": "cg-5",
+      "title": "Revisar Redes de Computadores com foco em VPC e webhooks",
+      "sort_order": 4
+    }
+  ]
+}

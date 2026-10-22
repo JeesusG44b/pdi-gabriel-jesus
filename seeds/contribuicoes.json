@@ -1,0 +1,77 @@
+{
+  "_nota": "Sem links por enquanto: os materiais estão em espaços privados. O Gabriel decide se publica cada um.",
+  "itens": [
+    {
+      "id": "material-eng-software",
+      "icon": "BookOpen",
+      "title": "Material de estudo: Engenharia de Software",
+      "category": "Estudos",
+      "description": "Documento de estudo em 16 capítulos, com trilha em cinco níveis, livros comentados e projetos práticos.",
+      "technologies": [
+        "Engenharia de Software",
+        "ADR",
+        "Arquitetura"
+      ],
+      "impacts": [
+        "Base para ADR e RFC no trabalho",
+        "Preparação para a prova"
+      ],
+      "status": "Concluído",
+      "sort_order": 0
+    },
+    {
+      "id": "material-gqs",
+      "icon": "BookOpen",
+      "title": "Material de estudo: Gerenciamento e Qualidade de Software",
+      "category": "Estudos",
+      "description": "Documento de estudo em 23 capítulos sobre gerência, qualidade, testes e métricas, com ponte para pagamentos.",
+      "technologies": [
+        "PMBOK",
+        "ISO/IEC 25010",
+        "ISTQB",
+        "DORA"
+      ],
+      "impacts": [
+        "Runbook e testes da automação P2",
+        "Preparação para a prova"
+      ],
+      "status": "Concluído",
+      "sort_order": 1
+    },
+    {
+      "id": "guia-clf-c02",
+      "icon": "GraduationCap",
+      "title": "Guia de estudos CLF-C02",
+      "category": "Cloud AWS",
+      "description": "Guia interativo com 6 módulos alinhados aos 4 domínios do exame e mini prova com peso por domínio.",
+      "technologies": [
+        "AWS",
+        "CLF-C02"
+      ],
+      "impacts": [
+        "Preparação para a certificação de janeiro de 2027"
+      ],
+      "status": "Em andamento",
+      "sort_order": 2
+    },
+    {
+      "id": "site-pdi",
+      "icon": "Globe",
+      "title": "Site do PDI",
+      "category": "Projetos",
+      "description": "Fork do pdi-template adaptado para trilhas, disciplinas e ciclos, construído com subagentes do Claude Code.",
+      "technologies": [
+        "React",
+        "TanStack Start",
+        "Cloudflare Workers",
+        "D1"
+      ],
+      "impacts": [
+        "Aprendizado em público",
+        "Prática de deploy serverless"
+      ],
+      "status": "Em andamento",
+      "sort_order": 3
+    }
+  ]
+}
