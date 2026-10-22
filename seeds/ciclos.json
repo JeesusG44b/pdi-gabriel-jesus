@@ -1,0 +1,20 @@
+[
+  {
+    "id": "ciclo-1",
+    "nome": "Ciclo 1: out a dez 2026",
+    "inicio": "2026-09-29",
+    "fim": "2026-12-31",
+    "foco": "5 projetos âncora, base serverless e Black Friday com carga reduzida (23/11 a 06/12).",
+    "status": "atual",
+    "sort_order": 0
+  },
+  {
+    "id": "ciclo-2",
+    "nome": "Ciclo 2: jan a mar 2027",
+    "inicio": "2027-01-01",
+    "fim": "2027-03-31",
+    "foco": "CLF-C02 em janeiro, versão em inglês do site, início do 9º semestre.",
+    "status": "planejado",
+    "sort_order": 1
+  }
+]
