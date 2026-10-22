@@ -1,0 +1,47 @@
+[
+  {
+    "id": "cloud",
+    "nome": "Cloud AWS",
+    "icon": "Cloud",
+    "dia_semana": "segunda",
+    "horas_semana": 1,
+    "foco": "Serverless orientado a eventos, modos de falha, idempotência e observabilidade. Base para CLF-C02 e SAA-C03.",
+    "sort_order": 0
+  },
+  {
+    "id": "dados",
+    "nome": "Dados e SQL",
+    "icon": "Database",
+    "dia_semana": "terça",
+    "horas_semana": 1,
+    "foco": "SQL avançado (CTEs, window functions, funil, cohort), modelagem de dados e business case com dados.",
+    "sort_order": 1
+  },
+  {
+    "id": "automacao",
+    "nome": "Automação e integrações",
+    "icon": "Workflow",
+    "dia_semana": "quarta",
+    "horas_semana": 1,
+    "foco": "TypeScript, testes, automação de fluxos, webhooks e APIs de plataformas de e-commerce.",
+    "sort_order": 2
+  },
+  {
+    "id": "ia",
+    "nome": "IA aplicada",
+    "icon": "Sparkles",
+    "dia_semana": "quinta",
+    "horas_semana": 1,
+    "foco": "LLM dentro de automação real (projeto P2), agentes, MCP e avaliação de saída de modelo.",
+    "sort_order": 3
+  },
+  {
+    "id": "ingles",
+    "nome": "Inglês profissional",
+    "icon": "Languages",
+    "dia_semana": "sexta",
+    "horas_semana": 0.5,
+    "foco": "Documentação lida no original e revisão semanal escrita em inglês a partir de novembro.",
+    "sort_order": 4
+  }
+]

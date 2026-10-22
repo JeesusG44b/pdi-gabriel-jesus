@@ -1,0 +1,1 @@
+-- Conteúdo da autora do template removido. Seed atual em 0006_seed_gabriel.sql.
