@@ -13,8 +13,8 @@
     {
       "binding": "DB",
       "database_name": "pdi-gabriel-jesus",
-      // TODO: substituir pelo ID real na Fase 6 (wrangler d1 create, com autorização do Gabriel).
-      "database_id": "TODO",
+      // ID do D1 de produção (wrangler d1 create pdi-gabriel-jesus).
+      "database_id": "41220ceb-1ab5-450b-a985-c1aa679ff581",
       "migrations_dir": "migrations",
     },
   ],
