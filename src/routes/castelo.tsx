@@ -1,8 +1,26 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { SectionTitle } from "@/components/ui-custom/SectionTitle";
 import { CasteloGame } from "@/components/castelo/CasteloGame";
+import { buildCastelo } from "@/castelo/model";
+import { listCiclos } from "@/api/ciclos";
+import { listDisciplinas } from "@/api/disciplinas";
+import { listGoals } from "@/api/goals";
+import { listRoadmap } from "@/api/roadmap";
+import { listTrilhas } from "@/api/trilhas";
 
+// O castelo lê as mesmas server functions das páginas tradicionais (SPEC 9.2 e 9.4, regra 1):
+// o filtro de visibilidade do servidor vale aqui sem código próprio.
 export const Route = createFileRoute("/castelo")({
+  loader: async () => {
+    const [trilhas, metas, roadmap, disciplinas, ciclos] = await Promise.all([
+      listTrilhas(),
+      listGoals(),
+      listRoadmap(),
+      listDisciplinas(),
+      listCiclos(),
+    ]);
+    return buildCastelo({ trilhas, metas, roadmap, disciplinas, ciclos });
+  },
   head: () => ({
     meta: [
       { title: "Castelo · PDI Gabriel Jesus" },
@@ -20,6 +38,7 @@ const controles = [
   { tecla: "Setas ou A e D", acao: "Andar" },
   { tecla: "Espaço", acao: "Pular" },
   { tecla: "E ou Enter", acao: "Interagir" },
+  { tecla: "Esc", acao: "Fechar o painel" },
 ];
 
 const paginas = [
@@ -34,15 +53,16 @@ const paginas = [
 // Tudo fora de <CasteloGame> é HTML renderizado no servidor (SPEC 9.4, regra 3):
 // sem JavaScript, a página continua explicando o que é e levando ao conteúdo.
 function Page() {
+  const data = Route.useLoaderData();
   return (
     <section className="py-10">
       <SectionTitle
         eyebrow="Em construção"
         title="Castelo"
-        description="O mesmo PDI, em forma de castelo para explorar. Por enquanto existe só uma sala de teste: ande, pule e acenda a tocha."
+        description="O mesmo PDI, em forma de castelo. As metas concluídas restauram as salas. Por enquanto estão abertos o salão central e a ala Cloud AWS."
       />
 
-      <CasteloGame />
+      <CasteloGame data={data} />
       <noscript>
         <p className="mt-3 text-sm text-muted-foreground">
           O castelo precisa de JavaScript. Todo o conteúdo está nas páginas listadas abaixo.
@@ -75,7 +95,7 @@ function Page() {
               <li key={p.to}>
                 <Link
                   to={p.to}
-                  className="inline-flex rounded-full border border-border bg-card px-3 py-1.5 text-sm font-medium hover:bg-secondary transition"
+                  className="inline-flex min-h-11 items-center rounded-full border border-border bg-card px-4 text-sm font-medium hover:bg-secondary transition"
                 >
                   {p.label}
                 </Link>

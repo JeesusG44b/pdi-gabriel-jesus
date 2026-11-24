@@ -233,11 +233,11 @@ Uma segunda forma de percorrer o mesmo PDI: o visitante controla um personagem e
 | Mecânica | Exploração leve: andar, pular, atravessar portas, interagir. Sem combate, sem vida, sem morte, sem save |
 | Dispositivo | Desktop primeiro (teclado). No toque, botões na tela: esquerda, direita, pular, interagir |
 | Modo tradicional | As rotas atuais. Dentro do castelo, um botão "Ver como página" leva à rota equivalente ao lugar onde o personagem está |
-| Engine | Phaser 4 (fixado em 4.2.1), carregado só no navegador e só na rota `/castelo` (import dinâmico). Salas desenhadas no Tiled e exportadas em JSON |
+| Engine | Phaser 4 (fixado em 4.2.1), carregado só no navegador e só na rota `/castelo` (import dinâmico). Salas em JSON do Tiled, em `public/castelo/mapas/`. Enquanto forem simples, são geradas por `scripts/castelo/gerar-mapas.mjs`; os arquivos abrem no editor Tiled |
 | Arte | Tilesets e sprites de licença aberta (CC0 ou equivalente), com a origem e a licença de cada pack em `public/castelo/CREDITOS.md` |
 | Paleta | Base escura de pedra e noite. As cores tricolores da seção 6.1 aparecem só no que está restaurado: vitrais, estandartes, tochas |
 | Avatar | O Gabriel em pixel art, a partir de um personagem CC0 já animado e customizado (cabelo, roupa, cores). Animações mínimas: parado, andando, pulando |
-| Painéis | HTML por cima do canvas, no formato de pergaminho, com Fjalla One e IBM Plex Sans. Texto selecionável e links reais |
+| Painéis | HTML por cima do canvas, com Fjalla One e IBM Plex Sans. O "pergaminho" é um painel lateral (`Sheet`) de 448 px, tela cheia no celular. Texto selecionável e links reais |
 | Áudio | Trilha ambiente e efeitos existem, desligados por padrão, com botão de ligar. Nada toca sem ação do visitante |
 
 Dependência nova autorizada por esta seção: `phaser`. Confirmado na documentação oficial em 24/11/2026: a versão estável é a 4.2.1 (a decisão original dizia Phaser 3; a API usada aqui é a mesma), e o import dinâmico fica dentro de `createClientOnlyFn` do TanStack Start, que remove o corpo da função do bundle do servidor.
@@ -258,7 +258,7 @@ Objetos dentro de uma ala:
 |---|---|---|
 | Meta | Peça central restaurável (vitral, estátua, lareira) | Planejado: ruína. Em progresso: andaime e meia-luz. Concluído: restaurado e aceso |
 | Tecnologia | Estandarte | preciso-estudar: rasgado e sem cor. estudando: remendado. domino: inteiro, com cor tricolor |
-| Disciplina | Tomo em estante | cursada, cursando, futura, pela lombada |
+| Disciplina | Tomo em estante | cursada, cursando, futura, pela lombada. A estante é um alvo só: o painel lista todas as disciplinas da trilha |
 
 A iluminação geral de cada ala é proporcional à fração de metas concluídas da trilha. Uma ala sem metas concluídas fica na penumbra, nunca ilegível.
 
@@ -273,13 +273,15 @@ Interagir com qualquer objeto abre o pergaminho com os mesmos campos que o card 
 5. Com `prefers-reduced-motion`, sem tremor de câmera, sem piscar de tocha e sem transição animada entre salas.
 6. O pergaminho é navegável por teclado, prende o foco enquanto aberto, fecha com Esc e devolve o controle ao jogo.
 7. Texto de interface em PT-BR, sem travessão, como no resto do site.
+8. O jogo só captura o teclado com o foco nele ou em lugar nenhum. Com o foco em um link, botão ou painel, Enter, espaço e setas valem para a página.
+9. Sob o canvas há uma legenda em texto (`aria-live`) com o lugar atual e o objeto à frente, incluindo o status por escrito. Nada no castelo depende só de cor ou de imagem.
 
 ### 9.5 Fases
 
 | Fase | Entrega | Pronto quando |
 |---|---|---|
 | C1 | Sala de teste: personagem provisório desenhado em código anda, pula e colide. Phaser carregando só em `/castelo`. Os packs de arte entram na C2 | Controles respondem no teclado e no toque; `npm run build` passa; home sem Phaser na aba Network |
-| C2 | Salão central e ala Cloud AWS com dados reais: metas, estandartes e tomos nos três estados; pergaminho; "Ver como página" | Mudar o status de uma meta no admin muda o objeto na próxima visita |
+| C2 | Salão central e ala Cloud AWS com dados reais: metas, estandartes e tomos nos três estados; pergaminho; "Ver como página". Arte do Gothicvania Church Pack (CC0), personagem do pack sem customização | Mudar o status de uma meta no admin muda o objeto na próxima visita |
 | C3 | Avatar customizado, paleta tricolor nos restaurados, áudio com botão | Revisão visual do Gabriel |
 | C4 | Demais alas (Dados e SQL, Automação e integrações, IA aplicada, Inglês profissional) | Toda meta pública do site tem um objeto no castelo |
 | C5 | Torre, capela e sala de troféus | Todo conteúdo das rotas tradicionais tem lugar no castelo |
