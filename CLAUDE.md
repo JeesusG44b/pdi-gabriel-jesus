@@ -63,3 +63,12 @@ Definidos em `.claude/agents/`. Fluxo e gates em `prompts/KICKOFF.md`.
 | `ui-builder` | Seções, cards, visual tricolor, contadores, admin | `src/components/`, `src/routes/`, `src/styles.css`, `src/data/profile.ts`, `public/` |
 | `privacy-reviewer` | Revisão só leitura: vazamento de dado interno, marca, filtros | nada (só relatório) |
 | `qa-verifier` | Roda testes, build e checagens de aceite | nada além de testes que faltarem, com aviso |
+
+## UI/UX skills
+
+Taste, a11y, bans, voice, and icon library for this project live in `.ux-profile.md`.
+Run `setup-ui-ux-skills` again only to change those defaults.
+Before UI or microcopy work, read `.ux-profile.md`, then the matching domain skill (page-patterns, viewports, forms, surfaces, loaders, empty-states, copy, motion).
+Before creating a new page, read `page-patterns` and name the pattern. Do not write page markup until the pattern is named.
+Layouts must pass `viewports` at 375px and 1280px.
+Before finishing UI, run `ux-audit`.
