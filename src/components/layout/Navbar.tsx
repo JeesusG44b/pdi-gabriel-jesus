@@ -24,7 +24,7 @@ function ThemeToggle({ className = "" }: { className?: string }) {
   );
 }
 
-// Ordem do menu (SPEC 3): Sobre, Objetivo, Metas, Roadmap, Contribuições, Soft Skills.
+// Ordem do menu (SPEC 3 e 9.2): Sobre, Objetivo, Metas, Roadmap, Contribuições, Soft Skills, Castelo.
 const links = [
   { to: "/", label: "Sobre" },
   { to: "/objetivo-carreira", label: "Objetivo" },
@@ -32,6 +32,7 @@ const links = [
   { to: "/roadmap", label: "Roadmap" },
   { to: "/contribuicoes", label: "Contribuições" },
   { to: "/soft-skills", label: "Soft Skills" },
+  { to: "/castelo", label: "Castelo" },
 ] as const;
 
 // Faixa tricolor de 4 px (SPEC 6.1): azul, branco e vermelho com larguras iguais.
