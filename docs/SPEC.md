@@ -213,3 +213,88 @@ Contraste mínimo WCAG AA (4,5:1 para texto normal) em todas as combinações ac
 - [ ] Contraste AA nos pares de cor da seção 6.1, nos dois temas
 - [ ] Layout sem scroll horizontal em 375 px e correto em 1440 px
 - [ ] `.dev.vars`, `.env` e `.wrangler/` no `.gitignore` e fora do histórico do git
+
+## 9. Modo Castelo
+
+Decidido em sessão de brainstorm em 24/11/2026. Nada desta seção está implementado. É uma feature posterior às seções 1 a 8 e não altera nenhuma delas.
+
+### 9.1 Objetivo
+
+Uma segunda forma de percorrer o mesmo PDI: o visitante controla um personagem em um castelo gótico de exploração lateral, em pixel art 16-bit. O castelo começa em ruínas e se restaura conforme as metas e os domínios avançam, de modo que o estado do castelo é o estado do PDI. Personagem, arte, mapa e nomes são originais ou de licença aberta. Nenhum jogo existente é recriado.
+
+### 9.2 Decisões fechadas
+
+| Tema | Decisão |
+|---|---|
+| Lugar | Rota `/castelo` neste repositório. Item "Castelo" no menu do cabeçalho. A home e as demais rotas não mudam |
+| Visibilidade | Pública, como o resto do site. Valem todas as regras de conteúdo do `CLAUDE.md` |
+| Dados | As server functions de leitura já existentes em `src/api/`. Nenhuma consulta própria, nenhuma tabela nova, nenhuma migration |
+| Escrita | Só leitura na primeira versão. Nenhuma mutation nova |
+| Mecânica | Exploração leve: andar, pular, atravessar portas, interagir. Sem combate, sem vida, sem morte, sem save |
+| Dispositivo | Desktop primeiro (teclado). No toque, botões na tela: esquerda, direita, pular, interagir |
+| Modo tradicional | As rotas atuais. Dentro do castelo, um botão "Ver como página" leva à rota equivalente ao lugar onde o personagem está |
+| Engine | Phaser 3, carregado só no navegador e só na rota `/castelo` (import dinâmico). Salas desenhadas no Tiled e exportadas em JSON |
+| Arte | Tilesets e sprites de licença aberta (CC0 ou equivalente), com a origem e a licença de cada pack em `public/castelo/CREDITOS.md` |
+| Paleta | Base escura de pedra e noite. As cores tricolores da seção 6.1 aparecem só no que está restaurado: vitrais, estandartes, tochas |
+| Avatar | O Gabriel em pixel art, a partir de um personagem CC0 já animado e customizado (cabelo, roupa, cores). Animações mínimas: parado, andando, pulando |
+| Painéis | HTML por cima do canvas, no formato de pergaminho, com Fjalla One e IBM Plex Sans. Texto selecionável e links reais |
+| Áudio | Trilha ambiente e efeitos existem, desligados por padrão, com botão de ligar. Nada toca sem ação do visitante |
+
+Dependência nova autorizada por esta seção: `phaser`. Não confirmei a versão atual nem o padrão de componente só de cliente no TanStack Start. Confirmar na documentação oficial antes de implementar.
+
+### 9.3 Mapeamento do PDI para o castelo
+
+| Lugar | Conteúdo | Fonte |
+|---|---|---|
+| Salão central | Sobre, rotina semanal, contadores de ciclo e formatura. Cinco portas, uma por trilha | `src/data/profile.ts`, `listTrilhas`, `listCiclos` |
+| Ala (uma por trilha) | Metas, tecnologias e disciplinas da trilha | `listGoals`, `listRoadmap`, `listDisciplinas` |
+| Torre | Objetivo de carreira. Um andar por etapa; o andar da etapa atual é onde a escada termina | `listCareer` |
+| Capela | Soft skills, separadas em "já pratico" e "em desenvolvimento" | `listSoftSkills` |
+| Sala de troféus | Contribuições | `listContributions` |
+
+Objetos dentro de uma ala:
+
+| Dado | Objeto | Estados |
+|---|---|---|
+| Meta | Peça central restaurável (vitral, estátua, lareira) | Planejado: ruína. Em progresso: andaime e meia-luz. Concluído: restaurado e aceso |
+| Tecnologia | Estandarte | preciso-estudar: rasgado e sem cor. estudando: remendado. domino: inteiro, com cor tricolor |
+| Disciplina | Tomo em estante | cursada, cursando, futura, pela lombada |
+
+A iluminação geral de cada ala é proporcional à fração de metas concluídas da trilha. Uma ala sem metas concluídas fica na penumbra, nunca ilegível.
+
+Interagir com qualquer objeto abre o pergaminho com os mesmos campos que o card da rota tradicional mostra. Meta: título, descrição, trilha, ciclo, prazo, prioridade, status, progresso.
+
+### 9.4 Regras
+
+1. O castelo nunca recebe dado que a rota tradicional não receberia. Itens com `visibilidade = 'admin'` ou `arquivada = 1` não chegam ao cliente, porque a leitura passa pelas mesmas server functions.
+2. O bundle do servidor (Worker) não inclui o Phaser nem os assets do jogo. Quem não abre `/castelo` não baixa a engine.
+3. `/castelo` responde com HTML útil antes do jogo carregar: título, uma frase de explicação, os controles e o link "Ver como página". Sem JavaScript ou sem WebGL e canvas, esse HTML é o que fica.
+4. O número de objetos de uma sala vem dos dados, não do mapa. O mapa do Tiled define posições (slots); meta, tecnologia ou disciplina nova ocupa o próximo slot livre sem redesenhar a sala. Slots esgotados: os itens excedentes aparecem só no pergaminho da sala, com aviso em console de desenvolvimento.
+5. Com `prefers-reduced-motion`, sem tremor de câmera, sem piscar de tocha e sem transição animada entre salas.
+6. O pergaminho é navegável por teclado, prende o foco enquanto aberto, fecha com Esc e devolve o controle ao jogo.
+7. Texto de interface em PT-BR, sem travessão, como no resto do site.
+
+### 9.5 Fases
+
+| Fase | Entrega | Pronto quando |
+|---|---|---|
+| C1 | Sala de teste: personagem de pack sem customização anda, pula e colide. Phaser carregando só em `/castelo` | Controles respondem no teclado e no toque; `npm run build` passa; home sem Phaser na aba Network |
+| C2 | Salão central e ala Cloud AWS com dados reais: metas, estandartes e tomos nos três estados; pergaminho; "Ver como página" | Mudar o status de uma meta no admin muda o objeto na próxima visita |
+| C3 | Avatar customizado, paleta tricolor nos restaurados, áudio com botão | Revisão visual do Gabriel |
+| C4 | Demais alas (Dados e SQL, Automação e integrações, IA aplicada, Inglês profissional) | Toda meta pública do site tem um objeto no castelo |
+| C5 | Torre, capela e sala de troféus | Todo conteúdo das rotas tradicionais tem lugar no castelo |
+
+Fora de escopo, para decidir depois: editar status de meta pelo pergaminho quando logado como admin (reaproveitando as mutations que já passam por `adminMiddleware`), histórico de restaurações com data, combate, áreas trancadas por pré-requisito.
+
+### 9.6 Critérios de aceite (C1 e C2)
+
+- [ ] `npm run build` e `npm test` passam
+- [ ] Home e demais rotas não requisitam Phaser nem assets de `/castelo` (aba Network)
+- [ ] `/castelo` com JavaScript desligado mostra título, explicação e link para as rotas tradicionais
+- [ ] Teclado: setas ou A/D movem, espaço pula, E ou Enter interage, Esc fecha o pergaminho
+- [ ] Toque: os quatro botões funcionam em 375 px sem scroll da página
+- [ ] As 3 metas da trilha Cloud AWS aparecem com o estado visual do seu status atual
+- [ ] Visitante não autenticado: nenhuma disciplina arquivada ou de admin na resposta das server functions chamadas pelo castelo
+- [ ] Pergaminho com foco preso, Esc para fechar e contraste AA
+- [ ] `public/castelo/CREDITOS.md` lista cada pack usado, com autor, link e licença
+- [ ] Nenhum nome, personagem, sprite, música ou mapa de jogo comercial existente
